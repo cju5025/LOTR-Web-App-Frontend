@@ -1,4 +1,6 @@
 import './App.css';
+import Header from './Components/Header';
+
 import React, { useEffect, useState } from 'react';
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <h1>One Web App To Rule Them All</h1>
       <h2>Books:</h2>
       {showBooks()}
