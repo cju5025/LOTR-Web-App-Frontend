@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
 
-  const [books, setBooks] = useState([]);
+  const [ books, setBooks ] = useState( [] );
 
   useEffect(() => {
     fetch('https://the-one-api.dev/v2/book')
@@ -16,7 +16,7 @@ function App() {
   function showBooks () {
     return (
         books.map(book => {
-          return <li key={book._id}>{book.name}</li>
+          return <li key={ book._id }>{ book.name }</li>
         })
     )
   }
@@ -26,9 +26,9 @@ function App() {
       <Header />
       <h1>One Web App To Rule Them All</h1>
       <h2>Books:</h2>
-      {showBooks()}
+      { showBooks() }
     </div>
   );
 }
 
-export default App;
+export default App
