@@ -5,11 +5,32 @@ function SignUp () {
     const [ username, setUsername ] = useState( " " )
     const [ password, setPassword ] = useState( " " )
     const [ passwordVerification, setPasswordVerification ] = useState( " " )
-    const [ passwordsMatch, setPasswordsMatch ] = useState( false )
+
+    function handleSubmit (event) {
+        event.preventDefault()
+        
+        if (passwordVerification === password) {
+            fetch('http://localhost:4000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    user: {
+                        username: username,
+                        password: password
+                    }
+                })
+            })
+        } else {
+            alert("passwords don't match")
+        }
+    }
 
     return (
         <div id="sign-up">
-            <form id="sign-up-form">
+            <form id="sign-up-form" onSubmit={ handleSubmit }>
                 <label>Username:</label>
                 <input 
                     type="text" 
@@ -36,6 +57,8 @@ function SignUp () {
                 onChange={ e => setPasswordVerification(e.target.value) }
                 >   
                 </input>
+
+                <input type="submit" value="Sign Up" id="sign-up-button" />
             </form>
         </div>
     )
